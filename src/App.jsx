@@ -1,28 +1,35 @@
-import { useState } from 'react'
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import Projects from './components/Projects';
+import About from './components/About';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+function BackgroundGradients() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
-        </div>
+    <>
+      <div className="pointer-events-none fixed inset-0 -z-0">
+        <div className="absolute -top-40 left-1/2 -translate-x-1/2 h-[600px] w-[1200px] rounded-full bg-gradient-to-r from-cyan-500/20 via-blue-500/20 to-purple-600/20 blur-3xl" />
       </div>
-    </div>
-  )
+    </>
+  );
 }
 
-export default App
+export default function App() {
+  return (
+    <div className="min-h-screen bg-black text-white selection:bg-purple-500/40">
+      <Navbar />
+      <BackgroundGradients />
+      <main className="relative" id="home">
+        <Hero />
+        <Projects />
+        <About />
+        <footer id="contact" className="border-t border-white/10">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 text-center text-white/70">
+            <p>Let’s build something fun. Reach out at</p>
+            <a href="mailto:rizal.dev@example.com" className="text-white hover:underline">rizal.dev@example.com</a>
+            <p className="mt-4 text-xs text-white/50">© {new Date().getFullYear()} Muhammad Khoirur Rizal</p>
+          </div>
+        </footer>
+      </main>
+    </div>
+  );
+}
